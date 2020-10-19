@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Restaurant;
 
 class RestaurantController extends Controller
@@ -14,7 +15,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return Restaurant::orderBy('id', 'DESC')->get();
+        $restaurant = DB::table('restaurants')->where('id', 2)->get();
+        return $restaurant;
     }
 
     /**
