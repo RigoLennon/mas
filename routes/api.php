@@ -17,6 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/* PRIMERA RUTA accedemos al ID del restaurante  */
 Route::resource('restaurants', 'RestaurantController');
 
-Route::resource('products', 'ProductController');
+/* SEGUNDA RUTA accedemos a las categorias segun el restaurante */
+Route::get('categories/{id}', 'CategoriesController@index');
+
+/* TERCER RUTA accedemos a los productos segun su categoria */
+Route::get('products/{cat_id}', 'ProductController@index');
+

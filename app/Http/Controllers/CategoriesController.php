@@ -4,25 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Product;
+use App\Categories;
 
-class ProductController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($cat_id)
+    public function index($id)
     {
-        $products = DB::table('products')->where('cat_id', $cat_id)->get();
-        return $products;
+        $categories = DB::table('product_categories')->where('rest_id', $id)->get();
+        return $categories;
     }
-
-    /*public function restaurants(){
-        $restaurant = DB::table('restaurants')->get();
-        return $restaurant;
-    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -42,11 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
 
-        $product->name = $request->name;
-
-        $product->save();
     }
 
     /**
@@ -57,7 +48,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::where('id', $id)->get();
+        //
     }
 
     /**
