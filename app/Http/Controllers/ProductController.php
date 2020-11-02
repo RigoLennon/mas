@@ -19,10 +19,10 @@ class ProductController extends Controller
         return $products;
     }
 
-    /*public function restaurants(){
-        $restaurant = DB::table('restaurants')->get();
-        return $restaurant;
-    }*/
+    public function ProductDetail($id){
+        $product_detail = DB::table('products')->where('id', $id)->get();
+        return $product_detail;
+    }
 
     /**
      * Show the form for creating a new resource.
