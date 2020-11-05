@@ -71,6 +71,7 @@
         <main class="py-4">
             @yield('content')
             @yield('test')
+            @yield('sidebar')
         </main>
     </div>
 </body>
