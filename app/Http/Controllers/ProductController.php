@@ -19,10 +19,10 @@ class ProductController extends Controller
         return $products;
     }
 
-    /*public function restaurants(){
-        $restaurant = DB::table('restaurants')->get();
-        return $restaurant;
-    }*/
+    public function indexmas(){
+        $products = DB::table('products')->where('prod_rest_id', 2)->get();
+        return view('admin.products', ['products', $products]);
+    }
 
     /**
      * Show the form for creating a new resource.

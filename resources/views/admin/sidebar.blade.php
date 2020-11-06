@@ -29,7 +29,7 @@
                     <i class="fas fa-briefcase"></i>
                     Categorias
                 </a>
-                <a href="#">
+                <a href="{{ ('/admin/products') }}">
                     <i class="fas fa-briefcase"></i>
                     Productos
                 </a>
@@ -89,6 +89,7 @@
         <!--Seccion Render de paginas hijas-->
         @yield('mainPage')
         @yield('categories')
+        @yield('products')
         <!--End -->
 
     <!-- End Page Content  -->

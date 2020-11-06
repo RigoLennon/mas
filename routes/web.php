@@ -22,3 +22,5 @@ Route::get('/welcome', 'HomeController@index')->name('welcome');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/admin/categories', 'CategoriesController@indexmas')->name('categories');
+
+Route::get('/admin/products', 'ProductController@indexmas')->name('products');
