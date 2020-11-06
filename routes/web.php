@@ -22,5 +22,8 @@ Route::get('/welcome', 'HomeController@index')->name('welcome');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/admin/categories', 'CategoriesController@indexmas')->name('categories');
+Route::get('/admin/categories/create', 'CategoriesController@create')->name('newcategory');
+Route::post('/admin/categories/post', 'CategoriesController@store')->name('postcategory');
+Route::get('/admin/categories/delete/{id}', 'CategoriesController@destroy')->name('deletecategory');
 
-Route::get('/admin/products', 'ProductController@indexmas')->name('products');
+Route::get('/admin/products', 'ProductController@indexmas')->name('productsmas');

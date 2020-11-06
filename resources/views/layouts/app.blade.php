@@ -69,7 +69,9 @@
         </nav>
 
         <main>
-            @yield('content')
+            @guest
+                @yield('login')
+            @endguest
             @yield('test')
             @yield('sidebar')
         </main>

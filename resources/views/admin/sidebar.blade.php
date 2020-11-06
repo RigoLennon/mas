@@ -90,6 +90,7 @@
         @yield('mainPage')
         @yield('categories')
         @yield('products')
+        @yield('newcat')
         <!--End -->
 
     <!-- End Page Content  -->
