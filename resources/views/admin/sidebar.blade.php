@@ -19,26 +19,19 @@
 
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle-sb">
+                <a href="{{ url('/admin') }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle-sb">
                     <i class="fas fa-home"></i>
-                    Home
+                    Inicio
                 </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
             </li>
             <li>
+                <a href="{{ ('/admin/categories') }}">
+                    <i class="fas fa-briefcase"></i>
+                    Categorias
+                </a>
                 <a href="#">
                     <i class="fas fa-briefcase"></i>
-                    About
+                    Productos
                 </a>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle-sb">
                     <i class="fas fa-copy"></i>
@@ -93,8 +86,12 @@
             </div>
         </nav>
 
+        <!--Seccion Render de paginas hijas-->
         @yield('mainPage')
-        
+        @yield('categories')
+        <!--End -->
+
+    <!-- End Page Content  -->
     </div>
 </div>
 

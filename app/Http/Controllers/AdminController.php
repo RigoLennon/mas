@@ -3,26 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use DB;
-use App\Categories;
 
-class CategoriesController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $categories = DB::table('product_categories')->where('rest_id', $id)->get();
-        return $categories;
-    }
+        $countCats = DB::table('product_categories')
+                        ->where('rest_id', 2)->count();
 
-    public function indexMas(){
-        $categories = DB::table('product_categories')->where('rest_id', 2);
+        $countProds = DB::table('products')
+                        ->where('prod_rest_id', 2)->count();
 
-        return view('admin.categories', ['categories', $categories]);
+        return view('admin.mainadminpage', [
+            'countCats' => $countCats, 
+            'countProds' => $countProds
+            ]);
+
     }
 
     /**
@@ -43,7 +46,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
