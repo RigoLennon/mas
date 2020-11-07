@@ -13,8 +13,8 @@
             <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-align-justify"></i>
             </button>-->
-            <h3>Menu Administration System</h3>
-            <strong>MAS</strong>
+            <h4>Menu Administration System</h4>
+            <h5 class="strong">MAS</h5>
         </div>
 
         <ul class="list-unstyled components">
