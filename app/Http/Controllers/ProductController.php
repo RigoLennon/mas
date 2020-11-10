@@ -21,7 +21,13 @@ class ProductController extends Controller
 
     public function indexmas(){
         $products = DB::table('products')->where('prod_rest_id', 2)->get();
-        return view('admin.products', ['products', $products]);
+        $countProds = DB::table('products')
+                        ->where('prod_rest_id', 2)->count();
+
+        return view('admin.products', [
+            'products'=> $products,
+            'countProds' => $countProds
+            ]);
     }
 
     /**
