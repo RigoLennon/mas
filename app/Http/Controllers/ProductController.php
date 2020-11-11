@@ -56,12 +56,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        /*$product = new Product;
-
-        $product->name = $request->name;
-
-        $product->save();*/
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -114,7 +108,16 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $cat_list = DB::table('product_categories')
+                    ->where('rest_id', '2')
+                    ->get();
+
+        return view('admin.products.editproduct', [
+            'cat_list' => $cat_list,
+            'product' => $product
+            ]);
     }
 
     /**
@@ -126,7 +129,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$product = Product::find($id);
+        //$product->update($request);
+
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('name');
+        $product->save($request->all());
+
+
+        return redirect('/admin/products');
     }
 
     /**

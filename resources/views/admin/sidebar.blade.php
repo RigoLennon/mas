@@ -92,6 +92,7 @@
         @yield('products')
         @yield('newcat')
         @yield('newprod')
+        @yield('editprod')
         <!--End -->
 
     <!-- End Page Content  -->
