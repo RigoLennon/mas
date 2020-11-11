@@ -29,7 +29,11 @@
                             <select class="form-control" name="cat_id" id="exampleFormControlSelect1">
                                 <option>Seleccionar categoria...<option>
                                 @foreach ($cat_list as $list)
-                                    <option value="{{ $list->id }}">{{ $list->cat_name }}</option>
+                                    @if ($list->cat_status == '1')
+                                        <option value="{{ $list->id }}">{{ $list->cat_name }}</option>
+                                    @else
+                                        No existen categorias 
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

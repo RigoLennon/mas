@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function indexmas(){
         $products = DB::table('products')
                     ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
-                    ->select('products.*', 'product_categories.*')
+                    ->select('products.*', 'product_categories.cat_name', 'product_categories.cat_status')
                     ->where('prod_rest_id', 2)
                     ->get();
 
@@ -110,6 +110,12 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+        /*$product = DB::table('products')
+                        ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
+                        ->where('products.id', $id)
+                        ->get()
+                        ->first()
+                        ;*/
 
         $cat_list = DB::table('product_categories')
                     ->where('rest_id', '2')
@@ -130,14 +136,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-=======
-        //$product = Product::find($id);
-        //$product->update($request);
-
->>>>>>> ProductsPage
         $product = Product::findOrFail($id);
+
         $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->short_descrip = $request->input('short_descrip');
+        $product->cat_id = $request->input('cat_id');
+
         $product->save($request->all());
 
 
