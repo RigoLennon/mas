@@ -27,8 +27,7 @@
                             <label for="exampleFormControlSelect1">Example select</label>
                             <select class="form-control" name="cat_id" id="exampleFormControlSelect1">
                                 @foreach ($cat_list as $list)
-                                    <!--<option id="{{ $list->id}}" value="{{ $list->id }}">{{$list->cat_name}}</option>-->
-                                    <option value="{{ $key }}">{{ $value }} </option>
+                                    <option value="{{ $list->id }}">{{ $list->cat_name }}</option>
                                 @endforeach
                             </select>
                         </div>

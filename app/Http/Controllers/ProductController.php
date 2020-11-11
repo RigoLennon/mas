@@ -67,7 +67,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'short_descrip' => 'required',
-            //'cat_id' => 'required'
+            'cat_id' => 'required'
         ]);
 
         $created_at = date('Y-m-d H:i:s');
@@ -137,6 +137,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prod = Product::find($id);
+
+        $prod->delete();
+
+        return redirect('/admin/products');
     }
 }

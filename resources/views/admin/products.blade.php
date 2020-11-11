@@ -21,6 +21,7 @@
                                     {{ $prod->name }}
                                     |
                                     {{ $prod->cat_name}}
+                                    <a href="{{ route('deleteproduct', $prod->id) }}" class="btn btn-xs btn-danger" onclick="return confirm('¿Quieres eliminar esta categoria?')">Eliminar</i></a>
                                 </li>
                             @endforeach
                         </ul>

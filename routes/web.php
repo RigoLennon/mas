@@ -29,3 +29,4 @@ Route::get('/admin/categories/delete/{id}', 'CategoriesController@destroy')->nam
 Route::get('/admin/products', 'ProductController@indexmas')->name('products');
 Route::get('/admin/products/create', 'ProductController@create')->name('newproduct');
 Route::post('/admin/products/post', 'ProductController@store')->name('postproduct');
+Route::get('/admin/products/delete/{id}', 'ProductController@destroy')->name('deleteproduct');
