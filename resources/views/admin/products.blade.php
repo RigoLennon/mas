@@ -19,7 +19,8 @@
                             @foreach ($products as $prod)
                                 <li class="list-group-item">
                                     {{ $prod->name }}
-                                    
+                                    |
+                                    {{ $prod->cat_name}}
                                 </li>
                             @endforeach
                         </ul>

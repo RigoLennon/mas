@@ -27,3 +27,5 @@ Route::post('/admin/categories/post', 'CategoriesController@store')->name('postc
 Route::get('/admin/categories/delete/{id}', 'CategoriesController@destroy')->name('deletecategory');
 
 Route::get('/admin/products', 'ProductController@indexmas')->name('products');
+Route::get('/admin/products/create', 'ProductController@create')->name('newproduct');
+Route::post('/admin/products/post', 'ProductController@store')->name('postproduct');

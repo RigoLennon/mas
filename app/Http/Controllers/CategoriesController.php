@@ -23,8 +23,6 @@ class CategoriesController extends Controller
         $categories = DB::table('product_categories')->where('rest_id', '2')->get();
         $cat_rest = DB::table('restaurants')->where('id', '2')->get()->first();
 
-        //return view('admin.categories', ['categories', $categories]);
-
         return view('admin.categories', [
             'categories' => $categories,
             'cat_rest' => $cat_rest,

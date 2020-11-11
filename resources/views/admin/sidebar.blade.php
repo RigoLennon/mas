@@ -91,6 +91,7 @@
         @yield('categories')
         @yield('products')
         @yield('newcat')
+        @yield('newprod')
         <!--End -->
 
     <!-- End Page Content  -->
