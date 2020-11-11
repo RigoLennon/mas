@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function indexmas(){
         $products = DB::table('products')
                     ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
-                    ->select('products.*', 'product_categories.cat_name')
+                    ->select('products.*', 'product_categories.*')
                     ->where('prod_rest_id', 2)
                     ->get();
 

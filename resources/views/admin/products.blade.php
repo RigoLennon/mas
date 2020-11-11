@@ -20,7 +20,11 @@
                                 <li class="list-group-item">
                                     {{ $prod->name }}
                                     |
-                                    {{ $prod->cat_name}}
+                                    @if ($prod->cat_status == '1')
+                                        {{ $prod->cat_name}}
+                                    @else
+                                        Sin categoria
+                                    @endif
                                     <a href="{{ route('editproduct', $prod->id)}}" class="btn btn-xs btn-warning">Editar</a>
                                     <a href="{{ route('deleteproduct', $prod->id) }}" class="btn btn-xs btn-danger" onclick="return confirm('¿Quieres eliminar esta categoria?')">Eliminar</i></a>
                                 </li>
