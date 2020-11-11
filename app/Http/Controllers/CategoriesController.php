@@ -20,7 +20,10 @@ class CategoriesController extends Controller
     }
 
     public function indexmas(){
-        $categories = DB::table('product_categories')->where('rest_id', '2')->get();
+        $categories = DB::table('product_categories')
+                            ->where('rest_id', '2')
+                            ->where('cat_status', '1')
+                            ->get();
         $cat_rest = DB::table('restaurants')->where('id', '2')->get()->first();
 
         return view('admin.categories', [
@@ -116,7 +119,9 @@ class CategoriesController extends Controller
     {
         $cat = Categories::find($id);
 
-        $cat->delete();
+        $cat->cat_status = '0';
+
+        $cat->save();
 
         return redirect('/admin/categories');
     }
