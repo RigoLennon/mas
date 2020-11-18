@@ -19,6 +19,19 @@ class CategoriesController extends Controller
         return $categories;
     }
 
+    public function indexmas(){
+        $categories = DB::table('product_categories')
+                            ->where('rest_id', '2')
+                            ->where('cat_status', '1')
+                            ->get();
+        $cat_rest = DB::table('restaurants')->where('id', '2')->get()->first();
+
+        return view('admin.categories', [
+            'categories' => $categories,
+            'cat_rest' => $cat_rest,
+            ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +39,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        $rest_id = DB::table('users')->where('id_restaurant', '2')->get()->first();
+
+        return view('admin.categories.newcategory',['rest_id' => $rest_id]);
     }
 
     /**
@@ -38,6 +53,26 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
 
+
+        $request->validate([
+            'cat_name' => 'required'
+        ]);
+
+        $cat = $request->input('cat_name');
+        $created_at = date('Y-m-d H:i:s');
+        $updated_at = date('Y-m-d H:i:s');
+        $rest_id = '2';
+
+        DB::table('product_categories')->insert(
+            [
+                'cat_name' => $cat ,
+                'rest_id' => $rest_id,
+                'created_at' => $created_at,
+                'updated_at' => $updated_at
+            ]
+        );
+
+        return redirect('/admin/categories');
     }
 
     /**
@@ -82,6 +117,12 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cat = Categories::find($id);
+
+        $cat->cat_status = '0';
+
+        $cat->save();
+
+        return redirect('/admin/categories');
     }
 }

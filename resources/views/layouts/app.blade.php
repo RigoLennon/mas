@@ -68,9 +68,12 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main>
+            @guest
+                @yield('login')
+            @endguest
             @yield('test')
+            @yield('sidebar')
         </main>
     </div>
 </body>

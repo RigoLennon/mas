@@ -19,10 +19,21 @@ class ProductController extends Controller
         return $products;
     }
 
-    /*public function restaurants(){
-        $restaurant = DB::table('restaurants')->get();
-        return $restaurant;
-    }*/
+    public function indexmas(){
+        $products = DB::table('products')
+                    ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
+                    ->select('products.*', 'product_categories.cat_name', 'product_categories.cat_status')
+                    ->where('prod_rest_id', 2)
+                    ->get();
+
+        $countProds = DB::table('products')
+                        ->where('prod_rest_id', 2)->count();
+
+        return view('admin.products', [
+            'products'=> $products,
+            'countProds' => $countProds
+            ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +42,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $cat_list = DB::table('product_categories')
+                    ->where('rest_id', '2')
+                    ->where('cat_status', '1')
+                    ->get();
+        return view('admin.products.newproduct', ['cat_list' => $cat_list]);//,['rest_id' => $rest_id]);
     }
 
     /**
@@ -42,11 +57,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'short_descrip' => 'required',
+            'cat_id' => 'required'
+        ]);
 
-        $product->name = $request->name;
+        $created_at = date('Y-m-d H:i:s');
+        $updated_at = date('Y-m-d H:i:s');
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $price = $request->input('price');
+        $short_descrip = $request->input('short_descrip');
+        $cat_id = $request->input('cat_id');
+        $prod_rest_id = 2;//$request->input('prod_rest_id');
 
-        $product->save();
+        DB::table('products')->insert(
+            [
+                'created_at' => $created_at,
+                'updated_at' => $updated_at,
+                'name' => $name,
+                'description' => $description,
+                'price' => $price,
+                'short_descrip' => $short_descrip,
+                'cat_id' => $cat_id,
+                'prod_rest_id' => $prod_rest_id
+            ]
+        );
+
+        return redirect('/admin/products');
     }
 
     /**
@@ -68,7 +109,22 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        /*$product = DB::table('products')
+                        ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
+                        ->where('products.id', $id)
+                        ->get()
+                        ->first()
+                        ;*/
+
+        $cat_list = DB::table('product_categories')
+                    ->where('rest_id', '2')
+                    ->get();
+
+        return view('admin.products.editproduct', [
+            'cat_list' => $cat_list,
+            'product' => $product
+            ]);
     }
 
     /**
@@ -80,7 +136,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->short_descrip = $request->input('short_descrip');
+        $product->cat_id = $request->input('cat_id');
+
+        $product->save($request->all());
+
+
+        return redirect('/admin/products');
     }
 
     /**
@@ -91,6 +158,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prod = Product::find($id);
+
+        $prod->delete();
+
+        return redirect('/admin/products');
     }
 }
