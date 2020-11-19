@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
+        $id = Auth::user('id_restaurant');
         
         $countCats = DB::table('product_categories')
                         ->where('rest_id', $id)->count();
