@@ -9,7 +9,7 @@
     <a href="{{ url('/admin') }}" class="active">Inicio</a>
     <a href="{{ ('/admin/categories') }}">Categorias</a>
     <a href="{{ ('/admin/products') }}">Productos</a>
-    <a href="#">Restaurante</a>
+    <a href="{{ ('/admin/restaurant') }}">Restaurante</a>
 </div>
 
 <div class="content">
@@ -19,6 +19,7 @@
     @yield('newcat')
     @yield('newprod')
     @yield('editprod')
+    @yield('restaurant')
 </div>
 
 

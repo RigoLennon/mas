@@ -32,3 +32,5 @@ Route::post('/admin/products/post', 'ProductController@store')->name('postproduc
 Route::get('/admin/products/edit/{id}', 'ProductController@edit')->name('editproduct');
 Route::put('/admin/products/update/{id}', 'ProductController@update')->name('updateproduct');
 Route::get('/admin/products/delete/{id}', 'ProductController@destroy')->name('deleteproduct');
+
+Route::get('/admin/restaurant', 'RestaurantController@indexmas')->name('restaurant');

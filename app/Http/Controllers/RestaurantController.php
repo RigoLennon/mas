@@ -19,6 +19,17 @@ class RestaurantController extends Controller
         return $restaurant;
     }
 
+    public function indexmas()
+    {
+        $restaurant = DB::table('restaurants')
+                            ->where('id', 2)
+                            ->get();
+
+        return view('admin.restaurant', [
+            'restaurant' => $restaurant
+            ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
