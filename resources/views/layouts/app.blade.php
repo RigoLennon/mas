@@ -74,6 +74,7 @@
             @endguest
             @yield('test')
             @yield('sidebar')
+            @yield('content')
         </main>
     </div>
 </body>

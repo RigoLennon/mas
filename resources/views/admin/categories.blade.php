@@ -4,8 +4,9 @@
     <div class="container">
         <div class="row ">
             <div class="col-md-12">
-                <h1>Categorias {{ $cat_rest->name}}</h1>
-                <small>Direccion: {{ $cat_rest->address}}</small>
+                    @foreach ($cat_rest as $ct)
+                        <h1>Categorias {{ $ct->name }}</h1>
+                    @endforeach
                 <hr>
             </div>
             <div class="col-md-12">

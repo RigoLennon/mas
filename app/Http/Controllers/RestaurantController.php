@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 use App\Restaurant;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class RestaurantController extends Controller
 {
@@ -21,8 +23,10 @@ class RestaurantController extends Controller
 
     public function indexmas()
     {
+        $id = Auth::user()->id_restaurant;
+
         $restaurant = DB::table('restaurants')
-                            ->where('id', 2)
+                            ->where('id', $id)
                             ->get();
 
         return view('admin.restaurant', [

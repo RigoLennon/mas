@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use DB;
 use App\Categories;
 
@@ -20,11 +21,16 @@ class CategoriesController extends Controller
     }
 
     public function indexmas(){
+        
+        $id = Auth::user()->id_restaurant;
+
         $categories = DB::table('product_categories')
-                            ->where('rest_id', '2')
+                            ->where('rest_id', $id)
                             ->where('cat_status', '1')
                             ->get();
-        $cat_rest = DB::table('restaurants')->where('id', '2')->get()->first();
+
+        //$cat_rest = DB::table('restaurants')->where('id', $id)->get()->first();
+        $cat_rest = DB::table('restaurants')->where('id', $id)->get();
 
         return view('admin.categories', [
             'categories' => $categories,
@@ -39,7 +45,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $rest_id = DB::table('users')->where('id_restaurant', '2')->get()->first();
+        $id = Auth::user()->id_restaurant;
+        $rest_id = DB::table('users')->where('id_restaurant', $id)->get()->first();
 
         return view('admin.categories.newcategory',['rest_id' => $rest_id]);
     }
@@ -52,7 +59,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-
+        $id = Auth::user()->id_restaurant;
 
         $request->validate([
             'cat_name' => 'required'
@@ -61,7 +68,7 @@ class CategoriesController extends Controller
         $cat = $request->input('cat_name');
         $created_at = date('Y-m-d H:i:s');
         $updated_at = date('Y-m-d H:i:s');
-        $rest_id = '2';
+        $rest_id = $id;
 
         DB::table('product_categories')->insert(
             [
