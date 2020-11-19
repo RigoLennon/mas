@@ -15,11 +15,13 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $id = Auth::id();
+        
         $countCats = DB::table('product_categories')
-                        ->where('rest_id', 2)->count();
+                        ->where('rest_id', $id)->count();
 
         $countProds = DB::table('products')
-                        ->where('prod_rest_id', 2)->count();
+                        ->where('prod_rest_id', $id)->count();
 
         return view('admin.mainadminpage', [
             'countCats' => $countCats, 
