@@ -26,3 +26,5 @@ Route::get('categories/{id}', 'CategoriesController@index');
 /* TERCER RUTA accedemos a los productos segun su categoria */
 Route::get('products/{cat_id}', 'ProductController@index');
 
+/* CUARTA RUTA accedemos al detalle del producto seleccionado */
+Route::get('product-detail/{prod_id}', 'ProductController@productDetail');

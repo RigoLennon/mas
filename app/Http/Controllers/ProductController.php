@@ -20,6 +20,12 @@ class ProductController extends Controller
         return $products;
     }
 
+    public function productDetail($prod_id)
+    {
+        $products = DB::table('products')->where('id', $prod_id)->get();
+        return $products;
+    }
+
     public function indexmas(){
         $id = Auth::user()->id_restaurant;
 
