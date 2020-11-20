@@ -11,9 +11,21 @@
 |
 */
 
+/*Route::get('/', function () {
+    return view('mainpage');
+});*/
+
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
-    return view('home');
+    if(Auth::check()){
+        return view('mainpage');
+    }
+    else{
+        return view('home');
+    }
 });
+
 
 Auth::routes();
 
