@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row ">
             <div class="col-md-12">
-                <h1>Hola de nuevo, {{ Auth::user()->name }}</h1>
+                <h1>Hola de nuevo, {{ Auth::user()->name }}
+                </h1>
             </div>
-
                 <div class="col-sm-6">
                     <div class="jumbotron">
                         <h1 class="display-6">Categorias</h1>

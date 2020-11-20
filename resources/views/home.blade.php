@@ -42,6 +42,12 @@
                         @endif
                     </div>
                 </form>
+                <hr>
+
+                    <label class="form-check-label">Si no tienes cuenta registrate</label>
+                    <div class="form-group">
+                        <a href="{{ ('/register') }}" class="btn btn-primary">Registro</a>
+                    </div>
             </div>
         </div>
     </div>

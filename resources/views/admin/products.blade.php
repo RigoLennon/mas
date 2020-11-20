@@ -6,7 +6,6 @@
             <div class="col-md-12">
                 <div class="col-md-12">
                     <h1>Tienes {{ $countProds }} productos registrados</h1>
-                    <small>Direccion:</small>
                     <hr>
                 </div>
                 <div class="col-md-12">

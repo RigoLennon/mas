@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 use App\Product;
 
 class ProductController extends Controller
@@ -20,14 +21,16 @@ class ProductController extends Controller
     }
 
     public function indexmas(){
+        $id = Auth::user()->id_restaurant;
+
         $products = DB::table('products')
                     ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
                     ->select('products.*', 'product_categories.cat_name', 'product_categories.cat_status')
-                    ->where('prod_rest_id', 2)
+                    ->where('prod_rest_id', $id)
                     ->get();
 
         $countProds = DB::table('products')
-                        ->where('prod_rest_id', 2)->count();
+                        ->where('prod_rest_id', $id)->count();
 
         return view('admin.products', [
             'products'=> $products,
@@ -42,8 +45,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $id = Auth::user()->id_restaurant;
+
         $cat_list = DB::table('product_categories')
-                    ->where('rest_id', '2')
+                    ->where('rest_id', $id)
                     ->where('cat_status', '1')
                     ->get();
         return view('admin.products.newproduct', ['cat_list' => $cat_list]);//,['rest_id' => $rest_id]);
@@ -57,6 +62,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $id = Auth::user()->id_restaurant;
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -72,7 +79,7 @@ class ProductController extends Controller
         $price = $request->input('price');
         $short_descrip = $request->input('short_descrip');
         $cat_id = $request->input('cat_id');
-        $prod_rest_id = 2;//$request->input('prod_rest_id');
+        $prod_rest_id = $id;//$request->input('prod_rest_id');
 
         DB::table('products')->insert(
             [
@@ -109,6 +116,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $id = Auth::user()->id_restaurant;
+
         $product = Product::findOrFail($id);
         /*$product = DB::table('products')
                         ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
@@ -118,7 +127,7 @@ class ProductController extends Controller
                         ;*/
 
         $cat_list = DB::table('product_categories')
-                    ->where('rest_id', '2')
+                    ->where('rest_id', $id)
                     ->get();
 
         return view('admin.products.editproduct', [
