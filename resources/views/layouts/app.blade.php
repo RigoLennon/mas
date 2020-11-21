@@ -75,6 +75,7 @@
             @yield('mainpage')
             @yield('sidebar')
             @yield('content')
+            @yield('noconfirmeduser')
         </main>
     </div>
 </body>
