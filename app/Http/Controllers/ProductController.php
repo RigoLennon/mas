@@ -122,7 +122,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $id = Auth::user()->id_restaurant;
+        $idrest = Auth::user()->id_restaurant;
 
         $product = Product::findOrFail($id);
         /*$product = DB::table('products')
@@ -133,12 +133,13 @@ class ProductController extends Controller
                         ;*/
 
         $cat_list = DB::table('product_categories')
-                    ->where('rest_id', $id)
+                    ->where('rest_id', $idrest)
                     ->get();
 
         return view('admin.products.editproduct', [
             'cat_list' => $cat_list,
-            'product' => $product
+            'product' => $product,
+            'id' => $id
             ]);
     }
 
