@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form method="POST" action="{{ route('postproduct') }}">
+                <form method="POST" action="{{ route('postproduct') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
                         <div class="form-group">
@@ -24,12 +24,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
+                            <label for="exampleFormControlSelect1">Elige una categoria</label>
                             <select class="form-control" name="cat_id" id="exampleFormControlSelect1">
                                 @foreach ($cat_list as $list)
                                     <option value="{{ $list->id }}">{{ $list->cat_name }}</option>
                                 @endforeach
                             </select>
+
+                            <label for="image">Subir foto</label>
+                            <input required type="file" class="form-control" name="image_1" id="image">
                         </div>
                     </div>
                     <div>

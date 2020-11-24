@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Product;
+use Validator,Redirect,Response,File;
 
 class ProductController extends Controller
 {
@@ -68,37 +69,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $id = Auth::user()->id_restaurant;
 
-        $request->validate([
+       $request->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'short_descrip' => 'required',
-            'cat_id' => 'required'
+            'cat_id' => 'required',
+            'image_1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $created_at = date('Y-m-d H:i:s');
-        $updated_at = date('Y-m-d H:i:s');
-        $name = $request->input('name');
-        $description = $request->input('description');
-        $price = $request->input('price');
-        $short_descrip = $request->input('short_descrip');
-        $cat_id = $request->input('cat_id');
-        $prod_rest_id = $id;//$request->input('prod_rest_id');
+        if ($files = $request->file('image_1')) {
+            $destinationPath = public_path('/img/products'); // upload path      
+            $productImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $productImage);
+        }
 
-        DB::table('products')->insert(
-            [
-                'created_at' => $created_at,
-                'updated_at' => $updated_at,
-                'name' => $name,
-                'description' => $description,
-                'price' => $price,
-                'short_descrip' => $short_descrip,
-                'cat_id' => $cat_id,
-                'prod_rest_id' => $prod_rest_id
-            ]
-        );
+        $product = Product::create([
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'short_descrip' => $request->input('short_descrip'),
+        'cat_id' => $request->input('cat_id'),
+        'prod_rest_id' => Auth::user()->id_restaurant,
+        'image_1' => $productImage//$request->file('image_1')->getClientOriginalName()
+        ]);
+
+        $product->save();
 
         return redirect('/admin/products');
     }

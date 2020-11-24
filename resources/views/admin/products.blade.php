@@ -24,6 +24,8 @@
                                     @else
                                         Sin categoria
                                     @endif
+                                    |
+                                    <img src="/img/products/{{ $prod->image_1}}" alt="Girl in a jacket" width="200" height="200">
                                     <a href="{{ route('editproduct', $prod->id)}}" class="btn btn-xs btn-warning">Editar</a>
                                     <a href="{{ route('deleteproduct', $prod->id) }}" class="btn btn-xs btn-danger" onclick="return confirm('¿Quieres eliminar esta categoria?')">Eliminar</i></a>
                                 </li>
