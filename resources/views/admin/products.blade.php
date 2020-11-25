@@ -1,14 +1,25 @@
 @extends('admin.sidebar')
 
 @section('products')
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+</ul>
     <div class="container">
         <div class="row ">
             <div class="col-md-12">
                 <div class="col-md-12">
-                    <h1>Tienes {{ $countProds }} productos registrados</h1>
+                    <h1 class="prod-txt-center">Tienes {{ $countProds }} productos registrados</h1>
                     <hr>
                 </div>
                 <div class="col-md-12">
+
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                    </ul>
                     <div class="col-md-6">
                         <div style="padding-bottom: 1em">
                             <a href="{{url('/admin/products/create')}}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Añadir nuevo producto</a>

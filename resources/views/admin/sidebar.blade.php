@@ -2,7 +2,9 @@
 
 @section('sidebar')
 
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<head>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+</head>
 
 <div class="sidebar">
     <h4 class="masfont">Menu Administration System</h4>

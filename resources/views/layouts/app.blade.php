@@ -68,7 +68,9 @@
             </div>
         </nav>
 
-        <main>
+        
+
+        <div>
             @guest
                 @yield('login')
             @endguest
@@ -76,7 +78,7 @@
             @yield('sidebar')
             @yield('content')
             @yield('noconfirmeduser')
-        </main>
+        </div>
     </div>
 </body>
 </html>
