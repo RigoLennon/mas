@@ -29,7 +29,6 @@ class CategoriesController extends Controller
                             ->where('cat_status', '1')
                             ->get();
 
-        //$cat_rest = DB::table('restaurants')->where('id', $id)->get()->first();
         $cat_rest = DB::table('restaurants')->where('id', $id)->get();
 
         return view('admin.categories', [

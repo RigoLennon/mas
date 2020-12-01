@@ -8,7 +8,8 @@
     margin: 0;
     padding: 0;
     width: 15em;
-    background-color: #163ba3;
+    /*background-color: #163ba3;*/
+    background: linear-gradient(10deg, #16a38b, #163ba3 50%);
     position: absolute;
     height: 100%;
     overflow: auto;
@@ -69,3 +70,42 @@ div.content {
 }
 
 /*END PRODUCTS STYLES*/
+
+/* CATEGORIES STYLES*/
+
+.cat-txt-center{
+    text-align: center;
+}
+
+.cardgrad{
+    /*width: 20em;*/
+    box-sizing: border-box;
+    padding: 2em;
+    /*font-family: ;*/
+    border-radius: 25px;
+    color: white;
+    line-height: 25px;
+    box-shadow: 5px 5px 10px #ccc;
+    float: left;
+    margin-right: 1em;
+    margin-top: 0.5em;
+}
+
+.cardgrad.blue{
+    background: linear-gradient(150deg, #16a38b, #163ba3 100%);
+}
+
+.cardgrad-form-control{
+    /*width: 20em;*/
+    box-sizing: border-box;
+    padding: 2em;
+    /*font-family: ;*/
+    border-radius: 25px;
+    color: black;
+    line-height: 25px;
+    box-shadow: 5px 5px 10px rgb(148, 148, 148);
+    /*float: inline-end;*/
+    /*margin-right: 1em;*/
+}
+
+/* END CATEGORIES STYLES*/
