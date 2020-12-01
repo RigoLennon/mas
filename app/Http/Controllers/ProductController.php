@@ -34,7 +34,8 @@ class ProductController extends Controller
                     ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
                     ->select('products.*', 'product_categories.cat_name', 'product_categories.cat_status')
                     ->where('prod_rest_id', $id)
-                    ->get();
+                    ->paginate(20)
+                    ;
 
         $countProds = DB::table('products')
                         ->where('prod_rest_id', $id)->count();
