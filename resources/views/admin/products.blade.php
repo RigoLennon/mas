@@ -28,9 +28,7 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
-
-                    
+                    </div>                    
                     
                     <table class="table">
                         <thead>
@@ -75,6 +73,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="col-md-12">
+                {{ $products->links() }}
             </div>
         </div>
     </div>
