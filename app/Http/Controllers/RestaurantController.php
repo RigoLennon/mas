@@ -21,6 +21,14 @@ class RestaurantController extends Controller
         return $restaurant;
     }
 
+    public function RestaurantList(){
+        $rest_list = DB::table('restaurants')
+                        ->where('confirmed', '1')
+                        ->get();
+
+        return $rest_list;
+    }
+
     public function indexmas()
     {
         $id = Auth::user()->id_restaurant;
