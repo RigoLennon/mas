@@ -39,6 +39,7 @@
                 <small id="img" class="form-text text-muted">*Imgen llamativa de tu producto</small>
             </div>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
