@@ -16,7 +16,10 @@ class CategoriesController extends Controller
      */
     public function index($id)
     {
-        $categories = DB::table('product_categories')->where('rest_id', $id)->get();
+        $categories = DB::table('product_categories')
+                            ->where('rest_id', $id)
+                            ->where('cat_status', '1')
+                            ->get();
         return $categories;
     }
 

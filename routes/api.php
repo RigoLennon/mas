@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /* RUTA PRUEBA TODOS LOS RESTAURANTES */
-Route::get('restaurant/list', 'RestaurantController@RestaurantList');
+Route::get('restaurant/{id}', 'RestaurantController@RestaurantByID');
 
 /* PRIMERA RUTA accedemos al ID del restaurante  */
 Route::resource('restaurants', 'RestaurantController');

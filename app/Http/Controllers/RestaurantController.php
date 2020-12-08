@@ -21,9 +21,10 @@ class RestaurantController extends Controller
         return $restaurant;
     }
 
-    public function RestaurantList(){
+    public function RestaurantByID($id){
         $rest_list = DB::table('restaurants')
                         ->where('confirmed', '1')
+                        ->where('id', $id)
                         ->get();
 
         return $rest_list;
