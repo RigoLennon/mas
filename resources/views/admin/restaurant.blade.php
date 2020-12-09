@@ -32,6 +32,7 @@
                     <div class="col-md-6">
                         <div class="jumbotron" style="color: white; background: #3a5fc7">
                             <h1 class="display-6">Codigo QR de tu restaurante</h1>
+                            <hr class="my-12">
                             <div id="qrcode" data-text={{$url}} class="text-center"></div>
                         </div>
                     </div>
