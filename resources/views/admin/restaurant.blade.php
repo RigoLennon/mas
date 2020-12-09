@@ -27,13 +27,13 @@
                     </div>
                     @php
                         $url = 'http://minteractive.diagonal-software.com/'.$rest->id;
+                        $entityId = 'HOLA'
                     @endphp
                     <div class="col-md-6">
                         <div class="jumbotron" style="color: white; background: #3a5fc7">
                             <h1 class="display-6">Codigo QR de tu restaurante</h1>
+                            <div id="qrcode" data-text={{$url}} class="text-center"></div>
                         </div>
-                        <div id="qrcode"></div>
-                        <div id="example"></div>
                     </div>
                 @endforeach
     </div>
