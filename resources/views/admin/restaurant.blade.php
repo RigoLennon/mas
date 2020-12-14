@@ -27,7 +27,6 @@
                     </div>
                     @php
                         $url = 'http://minteractive.diagonal-software.com/'.$rest->id;
-                        $entityId = 'HOLA'
                     @endphp
                     <div class="col-md-6">
                         <div class="jumbotron" style="color: white; background: #3a5fc7">
