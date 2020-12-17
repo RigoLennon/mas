@@ -11,7 +11,7 @@
     <a href="{{ url('/admin') }}" class="active">Inicio</a>
     @if (Auth::user()->rol == 2)
         <a href="{{ ('/super') }}">Activar Usuarios</a>
-        <a href="{{ ('/super/restaurant') }}">Añadir Restaurantes</a>
+        <a href="{{ ('/super/restaurant') }}">Admin Restaurantes</a>
     @endif
     <a href="{{ ('/admin/categories') }}">Categorias</a>
     <a href="{{ ('/admin/products') }}">Productos</a>

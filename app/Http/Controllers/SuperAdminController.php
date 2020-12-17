@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\User;
+use App\SuperAdmin;
 
 use Illuminate\Http\Request;
 
@@ -47,6 +48,7 @@ class SuperAdminController extends Controller
     public function sprest(){
 
         $rest = DB::table('restaurants')
+                        ->orderBy('confirmed')
                         ->orderBy('created_at', 'desc')
                         ->get();
 
@@ -80,7 +82,14 @@ class SuperAdminController extends Controller
             'address' => 'required'
         ]);
 
-        $restaurant = 
+        $restaurant = SuperAdmin::create([
+            'name' => $request->input('name'),
+            'address' => $request->input('address')
+        ]);
+
+        $restaurant->save();
+
+        return redirect('/super/restaurant');
     }
 
     /**

@@ -63,3 +63,4 @@ Route::get('/super/restaurant', 'SuperAdminController@sprest')->name('sprest');
 Route::get('/super/inactive/{id}', 'SuperAdminController@inactiveuser')->name('inactiveuser');
 Route::get('/super/active/{id}', 'SuperAdminController@activeuser')->name('activeuser');
 Route::get('/super/restaurant/add', 'SuperAdminController@sprestadd')->name('sprestadd');
+Route::post('/super/restaurant/post', 'SuperAdminController@store')->name('postrest');
