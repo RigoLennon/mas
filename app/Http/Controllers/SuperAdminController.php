@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +15,46 @@ class SuperAdminController extends Controller
      */
     public function index()
     {
-        //
+        $users = DB::table('users')
+                    ->orderBy('confirmed', 'asc')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+
+        return view('admin.superadmin.superMain', ['users'=>$users]);
+    }
+
+    public function activeuser($id){
+        $user = User::find($id);
+
+        $user->confirmed = '1';
+
+        $user->save();
+
+        return redirect('/super');
+    } 
+
+    public function inactiveuser($id){
+        $user = User::find($id);
+
+        $user->confirmed = '0';
+
+        $user->save();
+
+        return redirect('/super');
+    } 
+
+    public function sprest(){
+
+        $rest = DB::table('restaurants')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+
+        return view('admin.superadmin.superRest', ['rest'=>$rest]);
+    }
+
+    public function sprestadd(){
+        return view('admin.superadmin.superRestAdd');
     }
 
     /**
@@ -34,7 +75,12 @@ class SuperAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required'
+        ]);
+
+        $restaurant = 
     }
 
     /**
