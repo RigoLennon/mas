@@ -51,8 +51,15 @@ class SuperAdminController extends Controller
                         ->orderBy('confirmed')
                         ->orderBy('created_at', 'desc')
                         ->get();
+        
+        $rest_usr_list = DB::table('users')
+                            //->where('id_restaurant', $rest->id)
+                            ->get();
 
-        return view('admin.superadmin.superRest', ['rest'=>$rest]);
+        return view('admin.superadmin.superRest', [
+            'rest'=>$rest,
+            'rest_usr_list' => $rest_usr_list,
+            ]);
     }
 
     public function sprestadd(){
@@ -111,7 +118,11 @@ class SuperAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rest = SuperAdmin::findOrFail($id);
+
+        return view('admin.superadmin.superRestEdit', [
+            'rest' => $rest,
+            ]);
     }
 
     /**

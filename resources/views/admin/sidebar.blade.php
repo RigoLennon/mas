@@ -29,6 +29,7 @@
     @yield('supermain')
     @yield('sprest')
     @yield('sprestadd')
+    @yield('editrest')
 </div>
 
 
