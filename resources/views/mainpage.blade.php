@@ -6,6 +6,18 @@
         <div class="col-md-12">
             <h1>Bienvenido {{ Auth::user()->name }}</h1>
         </div>
+
+        @if ( Auth::user()->rol == 2)
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-12">Activacion de Usuarios</h1>
+                <p class="lead">Activar o desactivar usuarios nuevos</p>
+                <hr class="my-12">
+                <a class="btn btn-primary btn-lg" href="{{ ('/super') }}" role="button">Ver mas</a>
+            </div>
+        </div>
+        @endif
+
         <div class="col-md-12">
             <div class="jumbotron">
                 <h1 class="display-12">Crear promocion</h1>

@@ -78,6 +78,7 @@
             @yield('sidebar')
             @yield('content')
             @yield('noconfirmeduser')
+            @yield('norestaurant')
         </div>
     </div>
 </body>

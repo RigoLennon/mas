@@ -125,12 +125,6 @@ class ProductController extends Controller
         $idrest = Auth::user()->id_restaurant;
 
         $product = Product::findOrFail($id);
-        /*$product = DB::table('products')
-                        ->join('product_categories', 'products.cat_id', '=', 'product_categories.id')
-                        ->where('products.id', $id)
-                        ->get()
-                        ->first()
-                        ;*/
 
         $cat_list = DB::table('product_categories')
                     ->where('rest_id', $idrest)
