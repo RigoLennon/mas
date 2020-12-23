@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     if(Auth::check()){
-        if(Auth::user()->confirmed == 1){
-            return view('mainpage');
+        if(Auth::user()->id_restaurant == 404){
+            return view('noconfirmeduser');
         }
         else{
-            return view('noconfirmeduser');
+            return view('mainpage');
         }
     }
     else{

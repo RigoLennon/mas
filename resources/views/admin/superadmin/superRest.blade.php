@@ -30,9 +30,7 @@
                             <td>{{ $r->created_at }}</td>
                             <td>{{ $r->address }}</td>
                             <td>
-                                @foreach ($rest_usr_list as $rul)
-                                    <p>{{ $rul->name }}</p>
-                                @endforeach
+                                {{ $r->email}}
                             </td>
                             <td>
                                 @if ($r->confirmed == 0)

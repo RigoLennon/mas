@@ -50,15 +50,12 @@ class SuperAdminController extends Controller
         $rest = DB::table('restaurants')
                         ->orderBy('confirmed')
                         ->orderBy('created_at', 'desc')
+                        ->leftJoin('users','restaurants.id', '=' , 'users.id_restaurant')
+                        ->select('restaurants.*','users.email')
                         ->get();
-        
-        $rest_usr_list = DB::table('users')
-                            //->where('id_restaurant', $rest->id)
-                            ->get();
 
         return view('admin.superadmin.superRest', [
             'rest'=>$rest,
-            'rest_usr_list' => $rest_usr_list,
             ]);
     }
 
@@ -120,8 +117,14 @@ class SuperAdminController extends Controller
     {
         $rest = SuperAdmin::findOrFail($id);
 
+        $usr_list = DB::table('users')
+                    ->where('id_restaurant', 404)
+                    ->where('confirmed', 1)
+                    ->get();
+
         return view('admin.superadmin.superRestEdit', [
             'rest' => $rest,
+            'usr_list'=>$usr_list
             ]);
     }
 
@@ -134,7 +137,27 @@ class SuperAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rest = SuperAdmin::findOrFail($id);
+        $u_rest = $request->input('id_restaurant');
+
+        $rest->name = $request->input('name');
+        $rest->address = $request->input('address');
+        //$rest->id_restaurant = $request->input('id_restaurant');
+
+        /*$product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->short_descrip = $request->input('short_descrip');
+        $product->cat_id = $request->input('cat_id');
+        */
+
+        DB::table('users')
+            ->where('id', $u_rest)
+            ->update(['id_restaurant' => $id]);
+
+        $rest->save($request->all());
+
+        return redirect('/super/restaurant');
     }
 
     /**

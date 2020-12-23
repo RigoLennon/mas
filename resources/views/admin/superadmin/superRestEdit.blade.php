@@ -15,6 +15,14 @@
                 
                 <label>Direccion </label>
                 <input type="text" name="address" class="form-control" value="{{ $rest->address }}" required>
+
+                <label>Usuario asignado</label>
+                <select class="form-control" name="id_restaurant" id="exampleFormControlSelect1" required>
+                    <option value="">Selecciona un usuario...</option>
+                        @foreach ($usr_list as $u_list)
+                            <option value="{{ $u_list->id }}">{{ $u_list->name }}</option>
+                        @endforeach
+                </select>
             </div>
         </div>
         <br>
