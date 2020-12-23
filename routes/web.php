@@ -66,3 +66,5 @@ Route::get('/super/restaurant/add', 'SuperAdminController@sprestadd')->name('spr
 Route::post('/super/restaurant/post', 'SuperAdminController@store')->name('postrest');
 Route::get('/super/restaurant/edit/{id}', 'SuperAdminController@edit')->name('editrest');
 Route::put('/super/restaurant/update/{id}', 'SuperAdminController@update')->name('updaterest');
+Route::get('/super/rest/active/{id}', 'SuperAdminController@activerest')->name('activerest');
+Route::get('/super/rest/inactive/{id}', 'SuperAdminController@inactiverest')->name('inactiverest');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Restaurant;
+use App\SuperAdmin;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class RestaurantController extends Controller

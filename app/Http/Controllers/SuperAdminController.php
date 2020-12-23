@@ -63,6 +63,26 @@ class SuperAdminController extends Controller
         return view('admin.superadmin.superRestAdd');
     }
 
+    public function activerest($id){
+        $rest = SuperAdmin::find($id);
+
+        $rest->confirmed = '1';
+
+        $rest->save();
+
+        return redirect('/super/restaurant');
+    }
+
+    public function inactiverest($id){
+        $rest = SuperAdmin::find($id);
+
+        $rest->confirmed = '0';
+
+        $rest->save();
+
+        return redirect('/super/restaurant');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
